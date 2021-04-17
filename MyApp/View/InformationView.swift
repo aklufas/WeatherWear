@@ -20,14 +20,18 @@ struct InformationView: View {
     @State private var textTemperature=""
     @State private var textDescription=""
     @State private var icon=""
+    @State private var intTemperature = 0
     
     @State var cityName:String
     @State var zipCode:String
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
+    //this is the part for the coat options
     var body: some View {
         NavigationView{
-           
+            
+            //coatSelection(temp: self.intTemperature)
+            
             VStack{
                 ZStack{
                     Image("Bg").resizable().renderingMode(.original).edgesIgnoringSafeArea(.top)
@@ -38,11 +42,16 @@ struct InformationView: View {
                             Image("Back").resizable().renderingMode(.original).frame(width: 20, height: 20, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/).padding([.leading,.top])
                             
                         }.frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
-                        Text(cityName).foregroundColor(.white).bold().font(.system(size: 25))
+                        //City Name
+                        Text(cityName).foregroundColor(.white).bold().font(.system(size: 35))
                         Text(self.textDescription).foregroundColor(.white).font(.system(size: 15))
+                        
+                        
+                        
+                        //Weather Icon + Temperature
                         HStack{
                             Image(self.icon).resizable().renderingMode(.original).frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                            Text(self.textTemperature).foregroundColor(.white).bold().font(.system(size: 55))
+                            Text(self.textTemperature + "˚F").foregroundColor(.white).bold().font(.system(size: 55))
                         }
                         Spacer()
                     }
@@ -50,18 +59,48 @@ struct InformationView: View {
                 }.frame(height:200).onAppear{
                     self.getTemperature(zipcode: self.zipCode)
                 }
+                
+                //coat scroll
                 ScrollView(.vertical){
                     LazyVGrid(columns: columns, spacing: 20) {
-                ForEach((1...11), id: \.self) {
+                //ForEach((1..<11), id: \.self)
+                        ForEach(coatSelection(temp: self.intTemperature), id: \.self) {
+                    //what is ci?
+                    //ci - coat image
+                    // how is the coat image getting here?
+                    //ci is the IMAGE NAME!!! I GET IT!
                     Image("ci\($0)").resizable().renderingMode(.original).frame(width: 130, height: 150, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                     }
-                }
+                 }
                 }
                 Spacer()
             }.navigationTitle("").navigationBarHidden(true)
             
         }.navigationTitle("").navigationBarHidden(true)
     }
+    
+    //need to choose the coats 
+    func coatSelection(temp: Int) -> [Int] {
+        if temp < 30{
+            return [11,12]
+        }
+        else if temp < 40{
+            return [10,11,12]
+        }
+        else if temp < 50{
+            return [6,7,8,9]
+        }
+        else if temp < 60{
+            return [3,4,5,6]
+        }
+        else if temp < 70{
+            return [1,2]
+        }
+        else{
+            return [1]
+        }
+    }
+    
     func getTemperature(zipcode:String) {
         // 1
         let request = AF.request("https://api.openweathermap.org/data/2.5/weather?zip=\(zipcode),us&appid=fcb8c95d8335d44d6a013e1b3acaf585")
@@ -74,6 +113,8 @@ struct InformationView: View {
                     if let main = JSON["main"] as? NSDictionary {
                             if let temperature = main["temp"] as? Double {
                                 let newTemp:Int = Int((temperature - 273.15) * 1.8 + 32)
+                                //use self.newTemp or new variable?
+                                self.intTemperature = newTemp
                                 self.textTemperature=String(newTemp)
                                 
 
