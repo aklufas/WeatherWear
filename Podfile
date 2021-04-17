@@ -6,7 +6,7 @@ target 'MyApp' do
   use_frameworks!
  pod 'Alamofire', '~> 5.2'
   pod 'SwiftyJSON'
-
+  platform :ios, '14.0'
   # Pods for MyApp
 
 end
