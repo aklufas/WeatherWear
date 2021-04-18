@@ -26,7 +26,7 @@ struct MainView: View {
                 Text("Enter Zip Code").foregroundColor(.gray)
                     Spacer()
                 }
-                TextField("Zip Code", text: $textZipCode)
+                TextField("Zip Code", text: $textZipCode).keyboardType(.numberPad)
                 Divider().frame(height:1).background(Color.accentColor)
                 NavigationLink(destination:InformationView(cityName: self.city,zipCode: self.textZipCode),isActive: $goToInformationView){
                 Button(action:{

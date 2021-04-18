@@ -35,6 +35,7 @@ struct InformationView: View {
             VStack{
                 ZStack{
                     Image("Bg").resizable().renderingMode(.original).edgesIgnoringSafeArea(.top)
+                    //.frame(height:200) //just added
                     VStack{
                         Button(action:{
                             self.presentationMode.wrappedValue.dismiss()
@@ -42,6 +43,7 @@ struct InformationView: View {
                             Image("Back").resizable().renderingMode(.original).frame(width: 20, height: 20, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/).padding([.leading,.top])
                             
                         }.frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
+                        
                         //City Name
                         Text(cityName).foregroundColor(.white).bold().font(.system(size: 35))
                         Text(self.textDescription).foregroundColor(.white).font(.system(size: 15))
@@ -49,8 +51,8 @@ struct InformationView: View {
                         
                         
                         //Weather Icon + Temperature
-                        HStack{
-                            Image(self.icon).resizable().renderingMode(.original).frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                        HStack(alignment: .top){
+                            Image(self.icon).resizable().renderingMode(.original).frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, alignment: .top)
                             Text(self.textTemperature + "˚F").foregroundColor(.white).bold().font(.system(size: 55))
                         }
                         Spacer()
