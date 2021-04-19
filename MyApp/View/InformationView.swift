@@ -21,16 +21,14 @@ struct InformationView: View {
     @State private var textDescription=""
     @State private var icon=""
     @State private var intTemperature = 0
+    @State private var form="https://forms.gle/3mvpxFanQagBrPw36"
     
     @State var cityName:String
     @State var zipCode:String
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    //this is the part for the coat options
     var body: some View {
         NavigationView{
-            
-            //coatSelection(temp: self.intTemperature)
             
             VStack{
                 ZStack{
@@ -46,17 +44,14 @@ struct InformationView: View {
                         }.frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
                         
                         //City Name
-                        Text(cityName).foregroundColor(.white).bold().font(.system(size: 35, design: .rounded)) //.system(size: 35)
-                        //Text(self.textDescription).foregroundColor(.white).font(.system(size: 20, design: .rounded))
+                        Text(cityName).foregroundColor(.white).bold().font(.system(size: 35, design: .rounded))
                         
                         
-                      //VStack(spacing: 1){
                         //Weather Icon + Temperature
                         HStack(alignment: .center, spacing: 0){
                             Image(self.icon).resizable().renderingMode(.original).frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, alignment: .top)
                             Text(self.textTemperature + "˚F").foregroundColor(.white).bold().font(.system(size: 55, design: .rounded))
 
-                        //}}
                         }.frame(height: 50)
                             Text(self.textDescription).foregroundColor(.white)
                                 .font(.system(size: 20, design: .rounded))
@@ -73,18 +68,17 @@ struct InformationView: View {
                 ScrollView(.vertical){
                     Spacer().frame(height: 30)
                     LazyVGrid(columns: columns, spacing: 20) {
-                //ForEach((1..<11), id: \.self)
                         ForEach(coatSelection(temp: self.intTemperature), id: \.self) {
-                    //what is ci?
-                    //ci - coat image
-                    // how is the coat image getting here?
-                    //ci is the IMAGE NAME!!! I GET IT!
-                    Image("ci\($0)").resizable().renderingMode(.original).frame(width: 130, height: 150, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                            Image("ci\($0)").resizable().renderingMode(.original).frame(width: 130, height: 150, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                     }
                  }
                 }
                 Spacer()
+                Text("Found a Bug or Have a Feature Request?").foregroundColor(.gray)
+                Button("Click Here", action: feedbackForm)
+                    .foregroundColor(.accentColor).frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, minHeight: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxHeight: 40, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
             }.navigationTitle("").navigationBarHidden(true)
+            
             
         }.navigationTitle("").navigationBarHidden(true)
     }
@@ -109,6 +103,10 @@ struct InformationView: View {
         else{
             return [1]
         }
+    }
+    
+    func feedbackForm(){
+        UIApplication.shared.open(URL(string: form)!)
     }
     
     func getTemperature(zipcode:String) {

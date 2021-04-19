@@ -47,8 +47,13 @@ struct MainView: View {
                     Alert(title: Text("Ooops"), message: Text(self.textAlert), dismissButton: .default(Text("Got it!")))
                   }
                 }
+                Spacer()
+                Text("Found a Bug or Have a Feature Request?").foregroundColor(.gray)
+                Button("Click Here", action: feedbackForm)
+                    .foregroundColor(.accentColor).frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, minHeight: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxHeight: 40, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 
             }.padding().navigationTitle("").navigationBarHidden(true)
+            
             
           
             }.navigationTitle("").navigationBarHidden(true)
@@ -59,6 +64,11 @@ struct MainView: View {
             let bool = pinPredicate.evaluate(with: postalCode) as Bool
             return bool
         }
+    
+    func feedbackForm(){
+        UIApplication.shared.open(URL(string: form)!)
+    }
+    
     func loadView(zipcode:String) {
         // 1
         let request = AF.request("https://ziptasticapi.com/"+zipcode)
