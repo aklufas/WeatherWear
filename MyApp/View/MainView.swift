@@ -16,6 +16,7 @@ struct MainView: View {
     @State private var textAlert=""
     @State private var goToInformationView=false
     @State private var city=""
+    @State private var form="https://forms.gle/3mvpxFanQagBrPw36"
     
     var body: some View {
         NavigationView{
@@ -23,10 +24,10 @@ struct MainView: View {
                 Image("Artboard1").resizable().renderingMode(.original).frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, minHeight: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxHeight: 80, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 Image("Illustration").resizable().renderingMode(.original).frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, minHeight: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxHeight: 300, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 HStack{
-                Text("Enter Zip Code").foregroundColor(.gray)
+                    Text("Enter Zip Code").foregroundColor(.gray).font(.system(size: 25, design: .rounded))
                     Spacer()
                 }
-                TextField("Zip Code", text: $textZipCode).keyboardType(.numberPad)
+                TextField("Zip Code", text: $textZipCode).keyboardType(.numberPad).font(.system(size: 20, design: .rounded))
                 Divider().frame(height:1).background(Color.accentColor)
                 NavigationLink(destination:InformationView(cityName: self.city,zipCode: self.textZipCode),isActive: $goToInformationView){
                 Button(action:{
@@ -40,13 +41,17 @@ struct MainView: View {
                         }
                     
                 }) {
-                    Text("SUBMIT").foregroundColor(.white).bold().frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, minHeight: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxHeight: 40, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/).background(Color.accentColor).cornerRadius(5)
+                    Text("SUBMIT").foregroundColor(.white).bold().frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, minHeight: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxHeight: 40, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/).background(Color.accentColor)
+                        .cornerRadius(5).font(.system(size: 25, design: .rounded))
                 }.alert(isPresented: $showingAlert) {
                     Alert(title: Text("Ooops"), message: Text(self.textAlert), dismissButton: .default(Text("Got it!")))
+                  }
                 }
-                }
+                
             }.padding().navigationTitle("").navigationBarHidden(true)
-        }.navigationTitle("").navigationBarHidden(true)
+            
+          
+            }.navigationTitle("").navigationBarHidden(true)
     }
     func validZipCode(postalCode:String)->Bool{
             let postalcodeRegex = "^[0-9]{5}(-[0-9]{4})?$"

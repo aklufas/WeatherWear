@@ -52,14 +52,16 @@ struct InformationView: View {
                         
                       //VStack(spacing: 1){
                         //Weather Icon + Temperature
-                        HStack(alignment: .center, spacing: 10){
+                        HStack(alignment: .center, spacing: 0){
                             Image(self.icon).resizable().renderingMode(.original).frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, alignment: .top)
                             Text(self.textTemperature + "˚F").foregroundColor(.white).bold().font(.system(size: 55, design: .rounded))
 
-                        //}
-                            Text(self.textDescription).foregroundColor(.white).font(.system(size: 20, design: .rounded))
-                        }
-                        Spacer().frame(height: 30)
+                        //}}
+                        }.frame(height: 50)
+                            Text(self.textDescription).foregroundColor(.white)
+                                .font(.system(size: 20, design: .rounded))
+                        
+                        Spacer().frame(height: 40)
                         
                     }
                     
