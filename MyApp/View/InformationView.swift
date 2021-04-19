@@ -23,6 +23,7 @@ struct InformationView: View {
     @State private var intTemperature = 0
     @State private var form="https://forms.gle/3mvpxFanQagBrPw36"
     
+    
     @State var cityName:String
     @State var zipCode:String
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
@@ -69,7 +70,10 @@ struct InformationView: View {
                     Spacer().frame(height: 30)
                     LazyVGrid(columns: columns, spacing: 20) {
                         ForEach(coatSelection(temp: self.intTemperature), id: \.self) {
+            
                             Image("ci\($0)").resizable().renderingMode(.original).frame(width: 130, height: 150, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                            Text(coatConversion(coat: "\($0)"))
+
                     }
                  }
                 }
@@ -103,6 +107,10 @@ struct InformationView: View {
         else{
             return [1]
         }
+    }
+    
+    func coatConversion(coat: String) -> String{
+        return "hello"
     }
     
     func feedbackForm(){
