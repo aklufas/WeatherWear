@@ -35,7 +35,7 @@ struct MainView: View {
                             //Correct zip code
                             loadView(zipcode: self.textZipCode)
                         } else {
-                            self.textAlert="Wrong zip code."
+                            self.textAlert="Please enter a zip code within the US."
                             self.showingAlert=true
                         }
                     

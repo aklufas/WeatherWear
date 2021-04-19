@@ -36,26 +36,31 @@ struct InformationView: View {
                 ZStack{
                     Image("Bg").resizable().renderingMode(.original).edgesIgnoringSafeArea(.top)
                     //.frame(height:200) //just added
-                    VStack{
+                    VStack(spacing: 5){
+                        Spacer().frame(height: 30)
                         Button(action:{
                             self.presentationMode.wrappedValue.dismiss()
                         }) {
-                            Image("Back").resizable().renderingMode(.original).frame(width: 20, height: 20, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/).padding([.leading,.top])
+                            Image("Back").resizable().renderingMode(.original).frame(width: 20, height: 30, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/).padding([.leading,.top])
                             
                         }.frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
                         
                         //City Name
-                        Text(cityName).foregroundColor(.white).bold().font(.system(size: 35))
-                        Text(self.textDescription).foregroundColor(.white).font(.system(size: 15))
+                        Text(cityName).foregroundColor(.white).bold().font(.system(size: 35, design: .rounded)) //.system(size: 35)
+                        //Text(self.textDescription).foregroundColor(.white).font(.system(size: 20, design: .rounded))
                         
                         
-                        
+                      //VStack(spacing: 1){
                         //Weather Icon + Temperature
-                        HStack(alignment: .top){
+                        HStack(alignment: .center, spacing: 10){
                             Image(self.icon).resizable().renderingMode(.original).frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, alignment: .top)
-                            Text(self.textTemperature + "˚F").foregroundColor(.white).bold().font(.system(size: 55))
+                            Text(self.textTemperature + "˚F").foregroundColor(.white).bold().font(.system(size: 55, design: .rounded))
+
+                        //}
+                            Text(self.textDescription).foregroundColor(.white).font(.system(size: 20, design: .rounded))
                         }
-                        Spacer()
+                        Spacer().frame(height: 30)
+                        
                     }
                     
                 }.frame(height:200).onAppear{
@@ -64,6 +69,7 @@ struct InformationView: View {
                 
                 //coat scroll
                 ScrollView(.vertical){
+                    Spacer().frame(height: 30)
                     LazyVGrid(columns: columns, spacing: 20) {
                 //ForEach((1..<11), id: \.self)
                         ForEach(coatSelection(temp: self.intTemperature), id: \.self) {
