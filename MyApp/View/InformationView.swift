@@ -72,7 +72,7 @@ struct InformationView: View {
                         ForEach(coatSelection(temp: self.intTemperature), id: \.self) {
             
                             Image("ci\($0)").resizable().renderingMode(.original).frame(width: 130, height: 150, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                            Text(coatConversion(coat: "\($0)"))
+                            Text(coatConversion(coat: "\($0)")) //coatConversion(coat: "\($0)")
 
                     }
                  }
