@@ -72,7 +72,7 @@ struct InformationView: View {
                         ForEach(coatSelection(temp: self.intTemperature), id: \.self) {
             
                             Image("ci\($0)").resizable().renderingMode(.original).frame(width: 130, height: 150, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                            Text(coatConversion(coat: "\($0)")) //coatConversion(coat: "\($0)")
+                            Text(coatConversion(coat: "\($0)")).font(.system(size: 20, design: .rounded)) //coatConversion(coat: "\($0)")
 
                     }
                  }
@@ -110,7 +110,9 @@ struct InformationView: View {
     }
     
     func coatConversion(coat: String) -> String{
-        return "hello"
+       // print(coatLibary[1] ?? "np")
+        let num = Int(coat) ?? 13
+        return coatLibary[num] ?? "np"
     }
     
     func feedbackForm(){

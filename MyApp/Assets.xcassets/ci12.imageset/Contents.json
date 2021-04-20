@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "d3c7b5ba-be9b-4514-88e5-79b204f50873_1.f72ce69190848caa1a1176feed26c04c-removebg-preview.png",
+      "filename" : "ci12.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "ci12@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "ci12@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

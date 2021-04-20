@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "AdobeStock_257594812_Preview.jpeg",
+      "filename" : "ci3.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "ci3@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "ci3@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

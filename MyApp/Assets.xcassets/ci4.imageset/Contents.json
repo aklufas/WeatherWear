@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "91h9-Li8FZL._AC_UL1500_-removebg-preview.png",
+      "filename" : "ci4.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "ci4@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "ci4@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "61XcZ7kASqL._AC_UX342_-removebg-preview.png",
+      "filename" : "ci10.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "ci10@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "ci10@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

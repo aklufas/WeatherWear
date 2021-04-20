@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "168-1688320_blue-sweatshirt-png-clip-art-transparent-background-clothes-removebg-preview.png",
+      "filename" : "ci2.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "ci2@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "ci2@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
