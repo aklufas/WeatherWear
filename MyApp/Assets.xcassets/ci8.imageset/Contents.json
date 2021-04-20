@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Screen_Shot_2021-04-18_at_1.04.57_PM-removebg-preview (1).png",
+      "filename" : "ci8.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "ci8@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "ci8@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

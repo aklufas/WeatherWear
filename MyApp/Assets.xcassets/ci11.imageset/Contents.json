@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "ci5.png",
+      "filename" : "ci11.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "ci11@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "ci11@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

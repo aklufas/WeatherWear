@@ -19,5 +19,6 @@ var coatLibary = [1: "No Coat Needed",
                    9: "Medium Jacket",
                    10: "Wool Coat",
                    11: "Winter Jacket",
-                   12: "Parka"
+                   12: "Parka",
+                   13: "error!"
                     ]
