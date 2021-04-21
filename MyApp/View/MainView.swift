@@ -43,7 +43,7 @@ struct MainView: View {
                         }
                     
                 }) {
-                    Text("SUBMIT").foregroundColor(.white).bold().frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: 500, minHeight: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxHeight: 70, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/).background(Color.accentColor)
+                    Text("SUBMIT").foregroundColor(.white).bold().frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: 500, minHeight: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxHeight: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/).background(Color.accentColor)
                         .cornerRadius(5).font(.system(size: 25, design: .rounded))
                 }.alert(isPresented: $showingAlert) {
                     Alert(title: Text("Invalid Zip Code"), message: Text(self.textAlert), dismissButton: .default(Text("OK")))
