@@ -19,18 +19,18 @@ struct MainView: View {
     @State private var form="https://forms.gle/3mvpxFanQagBrPw36"
     
     var body:
-        some View {
+        some View { //changed from view to scene
         NavigationView{
             VStack{
-                Image("Artboard1").resizable().renderingMode(.original).frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, minHeight: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxHeight: 80, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                Image("Artboard1").resizable().renderingMode(.original).frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: 450, minHeight: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxHeight: 80, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 Spacer()
-                Image("Illustration").resizable().renderingMode(.original).frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, minHeight: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxHeight: 300, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                Image("Illustration").resizable().renderingMode(.original).frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: 450, minHeight: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxHeight: 450, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 HStack{
                     Text("Enter Zip Code").foregroundColor(.gray).font(.system(size: 25, design: .rounded))
                     Spacer()
-                }
-                TextField("Zip Code", text: $textZipCode).keyboardType(.numberPad).font(.system(size: 20, design: .rounded))
-                Divider().frame(height:1).background(Color.accentColor)
+                }.frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: 500, minHeight: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxHeight: 30, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                TextField("Zip Code", text: $textZipCode).keyboardType(.numberPad).font(.system(size: 20, design: .rounded)).frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: 500, minHeight: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxHeight: 30, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                Divider().frame(height:1).background(Color.accentColor).frame(maxWidth: 500)
                 NavigationLink(destination:InformationView(cityName: self.city,zipCode: self.textZipCode),isActive: $goToInformationView){
                 Button(action:{
  
@@ -43,10 +43,10 @@ struct MainView: View {
                         }
                     
                 }) {
-                    Text("SUBMIT").foregroundColor(.white).bold().frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, minHeight: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxHeight: 40, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/).background(Color.accentColor)
+                    Text("SUBMIT").foregroundColor(.white).bold().frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: 500, minHeight: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxHeight: 70, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/).background(Color.accentColor)
                         .cornerRadius(5).font(.system(size: 25, design: .rounded))
                 }.alert(isPresented: $showingAlert) {
-                    Alert(title: Text("Ooops"), message: Text(self.textAlert), dismissButton: .default(Text("Got it!")))
+                    Alert(title: Text("Invalid Zip Code"), message: Text(self.textAlert), dismissButton: .default(Text("OK")))
                   }
                 }
                 Spacer()
@@ -58,8 +58,10 @@ struct MainView: View {
             
             
           
-            }.navigationTitle("").navigationBarHidden(true)
+            }.navigationTitle("").navigationBarHidden(true).navigationViewStyle(StackNavigationViewStyle())
     }
+    
+    
     func validZipCode(postalCode:String)->Bool{
             let postalcodeRegex = "^[0-9]{5}(-[0-9]{4})?$"
             let pinPredicate = NSPredicate(format: "SELF MATCHES %@", postalcodeRegex)
