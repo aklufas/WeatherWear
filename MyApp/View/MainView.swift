@@ -18,7 +18,8 @@ struct MainView: View {
     @State private var city=""
     @State private var form="https://forms.gle/3mvpxFanQagBrPw36"
     
-    var body: some View {
+    var body:
+        some View {
         NavigationView{
             VStack{
                 Image("Artboard1").resizable().renderingMode(.original).frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, minHeight: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxHeight: 80, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
